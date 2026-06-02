@@ -32,5 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-server/resources/application.yml
-server/resources/application-dev.yml
+/server/resources/application.yml
+/server/resources/application-dev.yml
