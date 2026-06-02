@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: ${hanye.datasource.driver-class-name}
+    url: ${hanye.datasource.url}
+    username: ${hanye.datasource.username}
+    password: ${hanye.datasource.password}
+  data:
+    redis:
+      host: ${hanye.redis.host}
+      port: ${hanye.redis.port}
+      password: ${hanye.redis.password}
+      database: ${hanye.redis.database}
+  # Spring AI 通义千问配置
+  ai:
+    dashscope:
+      api-key: sk-46b58b5d7c024696a517ede77e827485  # 需要去阿里云百炼平台申请
+      chat:
+        options:
+          model: qwen-turbo
+          temperature: 0.7
+
+# MyBatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: fun.cyhgraph.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+# 登录注册 JWT 配置
+login-reg:
+  jwt:
+    employee-secret-key: cyh_handsome
+    employee-ttl: 864000000
+    employee-token-name: Authorization
+    user-secret-key: user_handsome
+    user-ttl: 864000000
+    user-token-name: Authorization
+
+# 项目自定义配置
+hanye:
+  wechat:
+    appid: ${hanye.wechat.appid}
+    secret: ${hanye.wechat.secret}
+  jwt:
+    admin-secret-key: cyh_handsome
+    admin-ttl: 86400000
+    admin-token-name: token
+    user-secret-key: user_handsome
+    user-ttl: 86400000
+    user-token-name: authentication
+  shop:
+    address: 广东省广州市番禺区亚运城广场
+  baidu:
+    ak: ePMydufnJzBBTQlrzKwxAmlpRApLxmOW
